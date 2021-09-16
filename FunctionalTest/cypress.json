@@ -1,0 +1,11 @@
+{
+  "integrationFolder": "cypress/features",
+  "testFiles": "**/*.feature",
+  "baseUrl": "http://localhost:4200/",
+  "videoCompression": false,
+  "videoUploadOnPasses": false,
+  "video": false,
+  "supportFile": "cypress/support/commands.js",
+  "viewportWidth": 1440,
+  "viewportHeight": 900
+}

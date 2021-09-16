@@ -1,0 +1,83 @@
+.custom-check-box {
+  position: relative;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.custom-check-box input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.custom-check-box .checkMark {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 2px solid var(--borderColor);
+}
+
+.custom-check-box .checkMark::after {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.custom-check-box input[type='checkbox']:checked ~ .checkMark {
+  background-color: var(--secondaryColor);
+  border: 2px solid var(--primaryColor);
+}
+
+.custom-check-box input[type='checkbox']:checked ~ .checkMark::after {
+  content: '\2713';
+}
+
+.custom-check-box input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
+
+.custom-check-box .check-box-text {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 30px;
+}
+
+.custom-check-box input[type='checkbox']:disabled ~ .checkMark,
+.custom-check-box input[type='checkbox']:disabled ~ .check-box-text {
+  opacity: 0.6;
+}
+
+.custom-check-box .check-box-text .check-box-image {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 4px;
+  height: 24px;
+  width: 24px;
+}
+
+.custom-check-box .check-box-text .check-box-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}

@@ -1,0 +1,119 @@
+/* Device Card CSS Start  */
+
+.device-progress-bar {
+  position: relative;
+  display: block;
+  padding: 3px 0;
+  border-radius: 0 5px 5px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: 5px;
+}
+
+.device-progress-bar span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  border-radius: 0 6px 6px 0;
+}
+
+.device-card-list {
+  padding-bottom: 70px;
+}
+
+.card.device-card {
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px 8px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.device-card .card-header {
+  position: relative;
+  font-weight: 600;
+  font-size: 16px;
+  width: 115px;
+  padding: 0 10px 0 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  background-color: transparent;
+  border: 0;
+}
+
+.device-card .card-header span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.device-content-list li {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.device-content-list li div {
+  color: var(--contentColor);
+  padding-right: 3px;
+  flex: 0 0 50%;
+  max-width: 50%;
+  text-align: right;
+}
+
+.device-content-list li div:last-of-type {
+  color: var(--textColor);
+  text-align: left;
+  font-weight: 600;
+}
+
+/* <!-- Device Card Css End  */
+
+/* No Data Css Start */
+
+.no-data-view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.no-data-view img {
+  width: 100%;
+  height: 100%;
+}
+
+.no-data-view .outer-image {
+  width: 250px;
+  height: 250px;
+}
+
+.no-data-view .inner-image {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 50%;
+  top: 50%;
+  margin-top: 6px;
+  transform: translate(-50%, -50%);
+}
+
+.no-data-view h5 {
+  color: var(--secondaryColor);
+  font-weight: 600;
+}
+
+.no-data-view h6 {
+  font-size: 13px;
+  color: var(--textColor);
+  font-weight: 600;
+}

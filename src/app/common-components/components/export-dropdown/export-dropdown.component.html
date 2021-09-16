@@ -1,0 +1,27 @@
+<ng-container *ngIf="!mobileView">
+	<ng-container *ngTemplateOutlet="desktopTemplate"></ng-container>
+</ng-container>
+
+<ng-container *ngIf="mobileView">
+	<ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+</ng-container>
+
+<ng-template #desktopTemplate>
+	<button class="btn btn-black dropdown-toggle" type="button" data-toggle="dropdown" id="export">
+		<i class="far fa-external-link mr-2"></i>Export
+	</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" (click)='downloadDataAsCsv()' data-testid="exportAsCSV">Export as CSV</a>
+		<a class="dropdown-item disabled" data-testid="exportAsExcel">Export as Excel</a>
+	</div>
+</ng-template>
+
+<ng-template #mobileTemplate>
+	<button class="btn btn-black" data-toggle="dropdown" (click)="filterStateChangeHandler()" data-testid="exportBtn" id="export">
+		<i class="far fa-external-link"></i>
+	</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" (click)='downloadDataAsCsv()'>Export as CSV</a>
+		<a class="dropdown-item disabled">Export as Excel</a>
+	</div>
+</ng-template>

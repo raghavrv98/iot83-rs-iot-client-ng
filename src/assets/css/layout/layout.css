@@ -1,0 +1,12 @@
+.app-content {
+  position: relative;
+  height: calc(100vh - 180px);
+  padding: 12px;
+}
+
+@media only screen and (max-width: 991px) {
+  .app-content {
+    padding: 0;
+    height: calc(100vh - 155px);
+  }
+}

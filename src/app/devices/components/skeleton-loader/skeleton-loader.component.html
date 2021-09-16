@@ -1,0 +1,18 @@
+<div class="app-content">
+	<ul class="flex list-style-none justify-content-center device-list-skeleton">
+		<li *ngFor="let number of elementCountHandler(49); trackBy: trackByFn">
+			<div class="card device-skeleton">
+				<div class="card-header">
+					<span class="skeleton-content"></span>
+					<span class="status-icon skeleton-content"></span>
+				</div>
+				<ul class="detail-card-body list-style-none">
+					<li *ngFor="let number of elementCountHandler(7); trackBy: trackByFn">
+						<span class="skeleton-content "></span>
+						<span class="skeleton-content"></span>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>

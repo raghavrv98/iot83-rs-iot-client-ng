@@ -1,0 +1,44 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+  background-color: var(--secondaryColor);
+  padding: 15px 25px;
+}
+
+.modal-header .modal-title {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.modal-title .close {
+  padding: 0;
+  margin: 0;
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  opacity: 1;
+  line-height: normal;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.filter-list li {
+  position: relative;
+  padding: 2px 0;
+}
+
+.modal-dialog-right {
+  float: right;
+  margin: 20px !important;
+  min-width: 400px;
+}

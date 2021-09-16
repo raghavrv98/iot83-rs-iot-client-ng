@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+  <div class="login-frame">
+    <div class="wrapper-brand">
+      <img alt="nventLogo" src="./assets/images/login.png" />
+    </div>
+    <h6 class="brand-name">
+      RAYCHEM Supervisor
+    </h6>
+    <div class="login-content">
+      <div class="welcome-text">
+        <h4><i class="fas fa-quote-left"></i>Welcome to the future of</h4>
+        <h3>Connection & Protection<i class="fas fa-quote-right"></i></h3>
+      </div>
+      <div class="login-logo-box" *ngIf="auth.testid.tidp; else openId">
+        <button class="mat-raised-button" id="{{auth.testid.provider.name}}" (click)="signIn(auth.testid.provider.name)"><span><img src="{{ auth.testid.provider.logoSrc }}"
+              alt="{{ auth.testid.provider.name }}" /></span>Sign In with {{ auth.testid.provider.displayName }}</button>
+      </div>
+      <ng-template #openId>
+        <div class="login-logo-box" *ngFor="let provider of providersByName | keyvalue">
+          <button class="mat-raised-button" (click)="signIn(provider.key)"><span><img src="{{ provider.value.logoSrc }}"
+                alt="{{ provider.key }}" /></span>Sign In with {{ provider.value.displayName }}</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

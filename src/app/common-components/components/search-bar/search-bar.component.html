@@ -1,0 +1,28 @@
+<ng-container *ngIf="!mobileView">
+    <ng-container *ngTemplateOutlet="desktopTemplate"></ng-container>
+</ng-container>
+
+<ng-container *ngIf="mobileView">
+    <ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+</ng-container>
+
+<ng-template #desktopTemplate>
+    <div class="form-group input-group mr-2">
+        <input type="text" class="form-control" data-testid="searchBox" id="search" aria-label="searchBox" placeholder="Search" />
+        <div class="input-group-append">
+            <i class="far fa-search pd-t-4"></i>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #mobileTemplate>
+    <button class="btn btn-black" data-toggle="dropdown" (click)="filterStateChangeHandler()" id="search">
+        <i class="far fa-search"></i>
+    </button>
+    <div class="dropdown-menu filter-search-wrapper">
+        <div class="form-group m-0">
+            <span class="form-control-icon"><i class="far fa-search"></i></span>
+            <input type="text" autocomplete='off' class="form-control pl-5" placeholder="Search..." value="">
+        </div>
+    </div>
+</ng-template>

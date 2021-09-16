@@ -1,0 +1,164 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fx-1 {
+  flex: 1;
+}
+
+.fx-b4 {
+  flex-basis: 4% !important;
+  max-width: 4% !important;
+}
+
+.fx-b5 {
+  flex-basis: 5% !important;
+  max-width: 5% !important;
+}
+
+.fx-b10 {
+  flex-basis: 10% !important;
+  max-width: 10% !important;
+}
+
+.fx-b12 {
+  flex-basis: 12% !important;
+  max-width: 12% !important;
+}
+
+.fx-b12_5 {
+  flex-basis: 12.5% !important;
+  max-width: 12.5% !important;
+}
+
+.fx-b14 {
+  flex-basis: 14.28% !important;
+  max-width: 14.28% !important;
+}
+
+.fx-b15 {
+  flex-basis: 15% !important;
+  max-width: 15% !important;
+}
+
+.fx-b16_66 {
+  flex-basis: 16.66% !important;
+  max-width: 16.66% !important;
+}
+
+.fx-b20 {
+  flex-basis: 20% !important;
+  max-width: 20% !important;
+}
+
+.fx-b21 {
+  flex-basis: 21% !important;
+  max-width: 21% !important;
+}
+
+.fx-b22 {
+  flex-basis: 22.5% !important;
+  max-width: 22.5% !important;
+}
+
+.fx-b25 {
+  flex-basis: 25% !important;
+  max-width: 25% !important;
+}
+
+.fx-b30 {
+  flex-basis: 30% !important;
+  max-width: 30% !important;
+}
+
+.fx-b33 {
+  flex-basis: 33.33% !important;
+  max-width: 33.33% !important;
+}
+
+.fx-b35 {
+  flex-basis: 35% !important;
+  max-width: 35% !important;
+}
+
+.fx-b37_5 {
+  flex-basis: 37.5% !important;
+  max-width: 37.5% !important;
+}
+
+.fx-b40 {
+  flex-basis: 40% !important;
+  max-width: 40% !important;
+}
+
+.fx-b43 {
+  flex-basis: 43% !important;
+  max-width: 43% !important;
+}
+
+.fx-b45 {
+  flex-basis: 45% !important;
+  max-width: 45% !important;
+}
+
+.fx-b50 {
+  flex-basis: 50% !important;
+  max-width: 50% !important;
+}
+
+.fx-b55 {
+  flex-basis: 55% !important;
+  max-width: 55% !important;
+}
+
+.fx-b57 {
+  flex-basis: 57% !important;
+  max-width: 57% !important;
+}
+
+.fx-b60 {
+  flex-basis: 60% !important;
+  max-width: 60% !important;
+}
+
+.fx-b65 {
+  flex-basis: 65% !important;
+  max-width: 65% !important;
+}
+
+.fx-b70 {
+  flex-basis: 70% !important;
+  max-width: 70% !important;
+}
+
+.fx-b75 {
+  flex-basis: 75% !important;
+  max-width: 75% !important;
+}
+
+.fx-b80 {
+  flex-basis: 80% !important;
+  max-width: 80% !important;
+}
+
+.fx-b85 {
+  flex-basis: 85% !important;
+  max-width: 85% !important;
+}
+
+.fx-b90 {
+  flex-basis: 90% !important;
+  max-width: 90% !important;
+}
+
+.fx-b95 {
+  flex-basis: 95% !important;
+  max-width: 95% !important;
+}
+
+.fx-b100 {
+  flex-basis: 100% !important;
+  max-width: 100% !important;
+}

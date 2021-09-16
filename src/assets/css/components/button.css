@@ -1,0 +1,68 @@
+.btn {
+  position: relative;
+  font-weight: 600 !important;
+}
+
+.btn:hover {
+  color: white;
+}
+
+.btn:focus {
+  box-shadow: none !important;
+}
+
+.btn-digitalRed1 {
+  color: white;
+  border-color: var(--secondaryColor);
+  background-color: var(--secondaryColor);
+}
+
+.btn-digitalRed1:last-of-type {
+  margin-left: 0;
+}
+
+.btn-black {
+  color: white;
+  border-color: var(--primaryColor);
+  background-color: var(--primaryColor);
+}
+
+.btn-black sup {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  border-radius: 2px;
+  padding: 7px 1px;
+  font-size: 10px;
+  font-weight: 600;
+  background-color: white;
+  color: var(--secondaryColor);
+}
+
+.btn-transparent {
+  color: var(--secondaryColor);
+  border-color: var(--secondaryColor);
+}
+
+.btn-transparent:hover {
+  color: var(--secondaryColor) !important;
+}
+
+button:disabled {
+  opacity: 0.2 !important;
+  cursor: not-allowed !important;
+  background-color: var(--secondaryColor) !important;
+  border: none;
+}
+
+button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .btn {
+    padding: 3px 6px;
+    border: none;
+  }
+}

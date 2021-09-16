@@ -1,0 +1,219 @@
+/* Filter css */
+
+.filter-wrapper {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 13px 15px;
+  background-color: var(--secondaryColor);
+}
+
+.filter-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid var(--borderColor);
+  color: var(--contentColor);
+  padding: 8px 10px;
+}
+
+.filter-box-form {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+.filter-box ul li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.filter-box ul li .dropdown-menu .dropdown-item {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.filter-menu {
+  position: relative;
+  min-height: 70px;
+  padding: 9px 120px 9px 9px;
+  background-color: white;
+  box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
+  z-index: 1;
+}
+
+.filter-menu .button-group {
+  position: absolute;
+  right: 15px;
+  top: 16px;
+}
+
+.filter-menu .filter-menu-item h6 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 7px 0 0;
+}
+
+.filter-menu .filter-menu-item button {
+  margin: 8px;
+  transition: all ease-in-out 0.3s;
+  background-color: #f2f2f2;
+}
+
+.filter-menu .filter-menu-item button.active,
+.filter-menu .filter-menu-item button:hover {
+  color: white;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--secondaryColor);
+}
+
+.filter-menu .filter-menu-item .dropdown-menu {
+  padding: 5px;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.filter-menu .filter-menu-item .dropdown-menu li {
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.filter-menu .filter-menu-item .dropdown-menu li:hover {
+  background-color: var(--secondaryColor);
+  color: white;
+}
+
+@media only screen and (max-width: 1520px) {
+  .filter-box-form .input-group {
+    width: 230px;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .filter-box-form .input-group {
+    width: 200px;
+  }
+
+  .filter-box ul li {
+    padding: 0 3px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .filter-box-form {
+    left: 130px;
+    transform: translate(0, -50%);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .filter-wrapper,
+  .filter-menu {
+    display: none;
+  }
+
+  .filter-wrapper-responsive {
+    display: block !important;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 10px;
+    background-color: var(--secondaryColor);
+  }
+
+  .filter-wrapper-responsive ul li {
+    margin-right: 6px;
+  }
+
+  .mobile-view-body .mobile-view-filter-list li {
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid var(--borderColor);
+  }
+
+  .filter-wrapper-responsive ul li:nth-last-child(1) {
+    position: absolute;
+    right: 5px;
+  }
+
+  .filter-wrapper-responsive ul li:nth-last-child(2) {
+    position: absolute;
+    right: 40px;
+  }
+
+  .mobile-view-filter {
+    display: block !important;
+    position: fixed;
+    padding: 0;
+    left: 0;
+    right: 0;
+    top: 106px;
+    bottom: 50px;
+    z-index: 1;
+  }
+
+  .mobile-view-header {
+    position: relative;
+    border-bottom: 1px solid var(--borderColor);
+    background-color: white;
+    padding: 10px 15px;
+  }
+
+  .mobile-view-header h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--secondaryColor);
+  }
+
+  .mobile-view-header .button-group {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+  }
+
+  .mobile-view-body {
+    height: calc(100% - 37px);
+  }
+
+  .mobile-view-body .mobile-view-filter-list {
+    border: 1px solid var(--borderColor);
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .mobile-view-body .mobile-view-filter-list li.active {
+    background-color: var(--secondaryColor);
+    color: white;
+  }
+
+  .mobile-view-body .mobile-view-filter-list li.active::before {
+    content: "\f105";
+    font-family: "Font Awesome 5 Pro", sans-serif;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: white;
+  }
+
+  .mobile-view-body .mobile-view-filter-list li:last-of-type {
+    border-bottom: none;
+  }
+
+  .mobile-view-body .mobile-view-filter-list.fx-b65 li {
+    padding: 6px 12px;
+  }
+}

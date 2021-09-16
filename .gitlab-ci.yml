@@ -1,0 +1,36 @@
+image: cypress/browsers:node12.16.2-chrome81-ff75
+stages:
+  - test
+  - e2e
+  - build
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm test
+
+e2e:
+  stage: e2e
+  script:
+    - npm install
+    - npm run ci
+
+build:
+  stage: build
+  variables:
+    IMAGE_TAG: "feature"
+  image: docker:19.03.11
+  services:
+    - docker:19.03.11-dind
+  script:
+    - cat ${RS_KEY} > rs.key
+    - cat ${RS_CRT} > rs.crt
+    - IMAGE_TAG=${CI_COMMIT_REF_NAME}
+    - if [[ $(expr match "$IMAGE_TAG" 'feature*') != 0 ]]; then IMAGE_TAG="feature"; fi
+    - IMAGE_TAG=$(echo $IMAGE_TAG | sed "s/\//_/")
+    - CHECK_VAR="$IMAGE_TAG"_IMAGE
+    - if [ -n "$( eval "echo \$$CHECK_VAR" )" ]; then IMAGE_TAG=$( eval "echo \$$CHECK_VAR" ); fi
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t registry.gitlab.com/engineeringsoftware/raychemsupervisor/rs-iot-client-ng/ui:${IMAGE_TAG} .
+    - docker push registry.gitlab.com/engineeringsoftware/raychemsupervisor/rs-iot-client-ng/ui:${IMAGE_TAG}

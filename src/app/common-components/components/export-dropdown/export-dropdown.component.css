@@ -1,0 +1,29 @@
+.dropdown-menu .dropdown-item {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.filter-wrapper-responsive {
+  display: block !important;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 10px;
+  background-color: var(--secondaryColor);
+}
+
+.filter-wrapper-responsive ul li {
+  margin-right: 6px;
+}
+
+.filter-wrapper-responsive ul li:nth-last-child(1) {
+  position: absolute;
+  right: 5px;
+}
+
+.filter-wrapper-responsive ul li:nth-last-child(2) {
+  position: absolute;
+  right: 40px;
+}

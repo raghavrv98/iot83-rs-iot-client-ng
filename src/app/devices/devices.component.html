@@ -1,0 +1,77 @@
+<div data-testid="skeletonLoader" *ngIf="isLoading; else elseBlock">
+	<app-skeleton-loader></app-skeleton-loader>
+</div>
+<ng-template #elseBlock>
+	<!-- Device Card Html Start -->
+	<div class="app-content">
+		<ul data-testid="deviceCards" class="device-card-list list-style-none flex justify-content-center">
+			<li *ngFor="let data of deviceListResponse.deviceAlarmData | slice:paginationService.deviceOffset: (paginationService.deviceOffset + paginationService.devicePerPage); let l = count; trackBy: trackByFn"
+				[id]="l">
+				<div class="card device-card"
+					[ngClass]="data.onlineStatus === 'Yes' ? data.alarmState === 'Yes'? 'bg-border-inactive': 'bg-border-active': 'bg-border-disabled'">
+					<h5 class="card-header">{{data.deviceTag}}<span
+							[ngClass]=" data.onlineStatus === 'Yes' && data.outputState === 'On'? 'bg-green': 'bg-gray'"></span>
+					</h5>
+					<ul class="list-style-none device-content-list">
+						<li>
+							<div>Control Temp :</div>
+							<div>
+								<span class="device-progress-bar">
+									<span class="bg-secondary" style="width: 70%;"></span>
+								</span>
+							</div>
+						</li>
+						<li>
+							<div>Temp 1 :</div>
+							<div>
+								<span class="device-progress-bar">
+									<span class="bg-warning" style="width: 50%;"></span>
+								</span>
+							</div>
+						</li>
+						<li>
+							<div>Temp 2 :</div>
+							<div>
+								<span class="device-progress-bar">
+									<span class="bg-warning" style="width: 40%;"></span>
+								</span>
+							</div>
+						</li>
+						<li>
+							<div>Current :</div>
+							<div> {{data.lineCurrentA}} A</div>
+						</li>
+						<li>
+							<div>G.F :</div>
+							<div> {{data.groundFaultCurrentmA}} mA</div>
+						</li>
+						<li>
+							<div>Voltage :</div>
+							<div>{{data.voltageV}} V</div>
+						</li>
+						<li>
+							<div>Power :</div>
+							<div> {{data.powerW}} W</div>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+</ng-template>
+<ng-container *ngIf="deviceListResponse.deviceAlarmData.length === 0 && isNoDataFound">
+	<div class="no-data-view">
+		<div class="outer-image">
+			<img src="./assets/images/nVentNoData.png" />
+		</div>
+		<div class="inner-image">
+			<img src="./assets/images/noSearchResult.png" />
+		</div>
+		<h5>No Device available</h5>
+		<h6>Please try with different search criteria.</h6>
+	</div>
+</ng-container>
+<!-- Device Card Html End -->
+<app-pagination [totalRecordsFiltered]="deviceListResponse.totalRecordsFiltered"
+	[lastPage]="deviceListResponse.lastPage"></app-pagination>
+	

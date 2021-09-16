@@ -1,0 +1,9 @@
+{
+   "cucumberautocomplete.steps": [
+      "FunctionalTest/cypress/step_definitions/*.ts"
+   ],
+   "cucumberautocomplete.strictGherkinCompletion": true,
+   "cucumberautocomplete.smartSnippets": true,
+   "jest.autoRun": {"watch": false, "onSave": "test-src-file"}
+}
+

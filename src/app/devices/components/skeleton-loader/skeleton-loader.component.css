@@ -1,0 +1,50 @@
+/* device page skeleton css start  */
+.card.device-skeleton {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px 8px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.detail-card-body li span {
+  width: 50px;
+  height: 9px;
+  display: inline-block;
+}
+
+.device-skeleton .card-header {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  padding: 0 8px;
+  width: 120px;
+}
+
+.device-skeleton .card-header span {
+  display: inline-block;
+  width: 75px;
+  height: 12px;
+}
+
+.device-skeleton .card-header .status-icon {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+.device-list-skeleton .detail-card-body {
+  padding-bottom: 8px;
+}
+
+.device-list-skeleton .detail-card-body li {
+  height: 17px;
+  text-align: center;
+}
+
+/* device page skeleton CSS end  */

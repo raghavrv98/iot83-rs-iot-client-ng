@@ -1,0 +1,83 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "plugins": [
+    "testing-library",
+    "jest-dom",
+    "cypress",
+    "rxjs-angular",
+    "rxjs"
+  ],
+  "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2019,
+        "project": "./tsconfig.json",
+        "sourceType": "module"
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:jest-dom/recommended",
+        "plugin:cypress/recommended",
+        "plugin:rxjs/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "kebab-case",
+            "type": "element"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "camelCase",
+            "type": "attribute"
+          }
+        ],
+        "rxjs-angular/prefer-async-pipe": "warn",
+        "rxjs-angular/prefer-takeuntil": "error"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": [
+        "plugin:testing-library/angular",
+        "plugin:jest-dom/recommended"
+      ]
+    },
+    {
+      "files": [
+        "*.js"
+      ],
+      "extends": [
+        "plugin:cypress/recommended"
+      ]
+    }
+  ]
+}

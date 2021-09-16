@@ -1,0 +1,54 @@
+<ng-container *ngIf="templateType === 'homePageTemplate'">
+    <div class="card-detail-wrapper">
+        <ul class="flex justify-content-center landing-card-list list-style-none">
+            <li *ngFor="let menuItem of menuItems; trackBy: trackByIndex" [id]="menuItem.route">
+                <a class="card landing-card" [routerLink]="menuItem.route">
+                    <div class="icon-logo">
+                        <i class="{{menuItem.icon}}"></i>
+                    </div>
+                    <h6 class="tab-title" [id]="menuItem.title">{{menuItem.title}}</h6>
+                </a>
+            </li>
+        </ul>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="templateType === 'commonTemplate'">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
+            <i class="far fa-bars" data-testid="hamburgerBtn"></i>
+        </button>
+        <a class="navbar-brand">
+            <img alt="nventLogo" src="./assets/images/nvent_logo_transparent.png" />
+        </a>
+        <h1 class="navbar-brand-name">
+            <strong class="text-theme">RAYCHEM </strong> Supervisor
+        </h1>
+        <div class="navbar-collapse navbar-responsive collapse" id="navbar">
+            <ul class="flex navbar-nav">
+                <li class="nav-item" *ngFor="let menuItem of menuItems; trackBy: trackByIndex">
+                    <a data-testid="links" [routerLink]="[menuItem.route]" routerLinkActive="active" class="nav-link"
+                        [id]="menuItem.route"><i [class]="menuItem.icon"></i>{{menuItem.title | titlecase}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-initials-wrapper">
+            <button class="navbar-initials border-0" data-toggle="dropdown" data-testid="initialsBtn"
+                id="initials"><span>ND</span></button>
+            <div class="dropdown-menu">
+                <div class="dropdown-menu-header">
+                    <h6>Hello! <strong class="fw600i">nVent Demo</strong> </h6>
+                    <p>Welcome to <strong class="fw600i">Shell Scotford</strong> </p>
+                </div>
+                <div class="dropdown-menu-footer pd-3">
+                    <button class="btn d-block" id="logout" (click)="signOut()"><i class="fal fa-sign-out mr-r-5 fw600"></i>Logout</button>
+                </div>
+
+            </div>
+        </div>
+        <a class="navbar-brand navbar-brand-right">
+            <img alt="customerLogo" src="./assets/images/05b0f0b84f9acb073c71714033a423cd.png" />
+        </a>
+    </nav>
+</ng-container>
+<router-outlet></router-outlet>

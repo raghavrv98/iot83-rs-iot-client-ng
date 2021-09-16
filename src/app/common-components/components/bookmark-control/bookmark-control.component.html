@@ -1,0 +1,72 @@
+<ng-container *ngIf="!mobileView">
+    <ng-container *ngTemplateOutlet="desktopTemplate"></ng-container>
+</ng-container>
+
+<ng-container *ngIf="mobileView">
+    <ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+</ng-container>
+
+<ng-template #desktopTemplate>
+    <div class="form-group input-group">
+        <input type="text" autocomplete='off' class="form-control" name="selectedBookmark"
+            [(ngModel)]="bookmarkService.bookmarkObject.currentBookmarkName"
+            (ngModelChange)="searchBookmarkHandler($event)" [disabled]="bookmarkService.bookmarkObject.bookmarksList.length===0" data-toggle="dropdown"
+            id="bookmark" aria-label="searchBox" data-testid="bookmarkBox" [placeholder]="bookmarkService.bookmarkObject.bookmarkPlaceholder" />
+        <div class="dropdown-menu bookmark-dropdown">
+            <h6 (click)="selectedBookmark('Bookmarks')" data-testid="savedBookmark">Saved Bookmark</h6>
+            <ul class="list-style-none">
+                <li (click)="bookmark.bookmarkName === bookmarkService.bookmarkObject.currentBookmarkName ? '' : selectedBookmark(bookmark.bookmarkName)"
+                    *ngFor="let bookmark of bookmarkService.bookmarkObject.bookmarkOptions; trackBy: trackByFn">
+                    {{bookmark.bookmarkName}}<button type="button" class="btn btn-digitalRed1"
+                        [disabled]='bookmark.bookmarkName === bookmarkService.bookmarkObject.bookmarkPlaceholder'
+                        (click)="deleteSelectedBookmark(bookmark.bookmarkName)" [id]="bookmark.bookmarkName">
+                        <i class="far fa-trash-alt"></i></button>
+                </li>
+                <li class="pd-4 text-center" *ngIf="bookmarkService.bookmarkObject.bookmarkOptions && bookmarkService.bookmarkObject.bookmarkOptions.length == 0">
+                    Not found
+                </li>
+            </ul>
+        </div>
+        <div class="input-group-append" data-target="#Bookmark" data-toggle="modal" data-testid="saveBookmark">
+            <span data-toggle="tooltip" data-placement="bottom" [title]="bookmarkService.bookmarkObject.bookmarkTitle">
+                <i [ngClass]="bookmarkService.isBookmarkActiveHandler() ? 'fa fa-star text-theme' : ' far fa-star'"></i>
+            </span>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #mobileTemplate>
+    <button class="btn btn-black" (click)="filterStateChangeHandler()" data-toggle="dropdown" data-testid="saveBookmark">
+        <i class="far fa-star"></i>
+    </button>
+    <div class="filter-search-wrapper dropdown-menu">
+        <div class="form-group m-0">
+            <span class="form-control-icon"><i class="far fa-search"></i></span>
+            <input type="text" name="selectedBookmark" autocomplete='off'
+                [(ngModel)]="bookmarkService.bookmarkObject.currentBookmarkName"
+                (ngModelChange)="searchBookmarkHandler($event)" class="form-control pl-5"
+                [placeholder]="bookmarkService.bookmarkObject.bookmarkPlaceholder" value="" id="bookmark">
+        </div>
+
+        <form #saveBookmarkForm="ngForm" (submit)="saveBookmarkHandler()">
+            <div class="form-group input-group p-3 m-0">
+                <input type="text" placeholder="Add Label" name="saveBookmark" autocomplete='off'
+                    [(ngModel)]="bookmarkService.bookmarkObject.saveBookmarkName" class="form-control" required>
+                <span class="input-group-append"><button type="submit" [disabled]="!saveBookmarkForm.form.valid"
+                        class="btn btn-digitalRed1" id="save"><i class="far fa-check"></i></button></span>
+            </div>
+        </form>
+
+        <ul *ngIf="bookmarkService.bookmarkObject.bookmarksList.length > 0" class="list-style-none p-3">
+            <li (click)="selectedBookmark('Bookmarks')" data-testid="savedBookmark">Saved Bookmark</li>
+            <li (click)="selectedBookmark(bookmark.bookmarkName)"
+                *ngFor="let bookmark of bookmarkService.bookmarkObject.bookmarkOptions; trackBy: trackByFn">{{bookmark.bookmarkName}}<button
+                    type="button" class="btn btn-digitalRed1" [disabled]='bookmark.bookmarkName === bookmarkService.bookmarkObject.bookmarkPlaceholder'
+                    (click)="deleteSelectedBookmark(bookmark.bookmarkName)" [id]="bookmark.bookmarkName"><i class="far fa-trash-alt"></i></button>
+            </li>
+            <li class="pd-4 text-center" *ngIf="bookmarkService.bookmarkObject.bookmarkOptions && bookmarkService.bookmarkObject.bookmarkOptions.length == 0">
+                Not found
+            </li>
+        </ul>
+    </div>
+</ng-template>

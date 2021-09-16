@@ -1,0 +1,160 @@
+<!-- Filter Wrapper -->
+<div class="filter-wrapper" *ngIf="!isMobileView">
+  <button class="btn filter-btn" (click)="filterStateChangeHandler()" data-testid="filterBtn" id="filter"><i class="fas fa-filter mr-2"></i>Filter<i [ngClass]="filterService.isFilterMenuOpen ? 'fa-angle-up':'fa-angle-down'" class="far ml-3"></i></button>
+  <div class="filter-box-form flex justify-content-center">
+
+    <app-search-bar [mobileView]="false"></app-search-bar>
+
+    <app-bookmark-control [mobileView]="false"></app-bookmark-control>
+
+  </div>
+  <div class="filter-box">
+    <ul class="list-style-none flex justify-content-end align-items-center">
+      <li>
+        <app-alarm-notification></app-alarm-notification>
+      </li>
+      <li>
+        <app-export-dropdown [mobileView]="false"></app-export-dropdown>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Filter Wrapper End -->
+
+<!-- Mobile Filter Wrapper -->
+<div class="filter-wrapper-responsive d-none" *ngIf="isMobileView">
+  <ul class="flex list-style-none align-items-center">
+    <li (click)="filterStateChangeHandler()">
+      <button class="btn btn-black" data-testid="filterBtn" id="filter">
+        <i class="fas fa-filter"></i>
+      </button>
+    </li>
+    <li>
+      <app-search-bar [mobileView]="true"></app-search-bar>
+    </li>
+    <li>
+      <app-bookmark-control [mobileView]="true"></app-bookmark-control>
+    </li>
+    <li>
+      <app-alarm-notification></app-alarm-notification>
+    </li>
+    <li>
+      <app-export-dropdown [mobileView]="true"></app-export-dropdown>
+    </li>
+  </ul>
+</div>
+<!-- Mobile Filter Wrapper End -->
+
+<ng-container *ngIf="filterService.isFilterMenuOpen">
+  <!--Filter Menu -->
+  <div class="flex filter-menu" data-testid="filterMenu" *ngIf="!isMobileView">
+    <div class="filter-menu-item" *ngFor="let item of allFiltersData; let i=index; trackBy: trackByFn">
+      <ng-container *ngIf="item.display">
+        <button (click)="resetSearchBoxField()"
+          [ngClass]="appliedFilterHandler(item.name) ? 'btn dropdown-toggle active' : 'btn dropdown-toggle'"
+          data-toggle="dropdown"
+          [id]="item.displayName+'_'+i"><span>{{item.displayName}}</span>{{appliedFilterHandler(item.name)}}</button>
+        <ul class="dropdown-menu">
+          <div class="form-group">
+            <input type="text" autocomplete='off' class="form-control pl-5" [(ngModel)]="searchSubFilter" name="search"
+              placeholder="Search..." value="" (ngModelChange)="searchBoxFilter(item)">
+            <span class="form-control-icon"><i class="far fa-search"></i></span>
+          </div>
+          <li *ngFor="let subItem of item.subFilters; trackBy: trackByFn">
+            <label class="custom-check-box d-block">
+              <input type="checkbox" [(ngModel)]="subItem.checked" name="checkbox"
+                (ngModelChange)="applyFilter(item, subItem)"
+                [id]="subItem.displayName">
+              <span class="checkMark"></span>
+              <span class="check-box-text">{{subItem.displayName}}</span>
+            </label>
+          </li>
+          <li class="pd-4 text-center" *ngIf="item.subFilters && item.subFilters.length == 0">
+            Not found
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+
+    <div class="button-group">
+      <button (click)="resetFilter()" class="btn btn-transparent" data-placement="top" title="Reset"
+        data-testid="resetFilter" id="reset"><i class="far fa-undo"></i></button>
+      <button class="btn btn-transparent" data-testid="addRemoveFilterModal" type="button" data-placement="top"
+        title="Add/Remove Filter" data-toggle="modal" data-target="#addRemoveFilterModal" id="settings">
+        <i class="far fa-cogs"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Filter Menu End-->
+
+  <!-- Mobile Filter Menu -->
+  <div class="card mobile-view-filter d-none" *ngIf="isMobileView">
+    <div class=" card-header mobile-view-header">
+      <h6>Filter By</h6>
+      <div class="button-group">
+        <button class="btn btn-transparent" data-toggle="modal" data-target="#addRemoveFilterModal"
+          data-testid="settingsBtn" id="settings">
+          <i class="far fa-cogs"></i>
+        </button>
+        <button (click)="resetFilter()" class="btn btn-transparent" id="reset"><i class="far fa-undo"></i></button>
+        <button class="btn btn-transparent" (click)="filterStateChangeHandler()" id="filterClose"><i class="far fa-times"></i></button>
+      </div>
+    </div>
+    <div class="card-body p-2 flex mobile-view-body">
+      <ul class="fx-b35 mobile-view-filter-list list-style-none" id="filterMenu">
+        <ng-container *ngFor="let filterItem of allFiltersData; let i = index; trackBy: trackByFn">
+          <li (click)="showSubFilterItems(i)" *ngIf="filterItem.display"
+            [ngClass]="{ 'active': mobileSelectedFilter.name === filterItem.name }" [id]="filterItem.displayName">
+            {{filterItem.displayName}}
+          </li>
+        </ng-container>
+      </ul>
+      <ul class="fx-b65 mobile-view-filter-list list-style-none">
+        <li *ngFor="let subItem of mobileSelectedFilter.subFilters; trackBy:trackByFn">
+          <label class="custom-check-box d-block">
+            <input type="checkbox" [(ngModel)]="subItem.checked" name="responsiveFilterCheckbox"
+              (ngModelChange)="applyFilter(mobileSelectedFilter, subItem)"
+              [id]="subItem.displayName">
+            <span class="checkMark"></span>
+            <span class="check-box-text">{{subItem.displayName}}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Mobile Filter Menu End -->
+</ng-container>
+
+<!-- Add/Remove Filter Modal -->
+<div class="modal fade" id="addRemoveFilterModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add / Remove filter<button type="button" class="close" data-dismiss="modal"> &times; </button></h4>
+      </div>
+      <div class="modal-body">
+        <ul class="filter-list list-style-none">
+          <li *ngFor="let item of allFiltersData; trackBy: trackByFn">
+            <label class="custom-check-box d-block">
+              <input [(ngModel)]="item.display" name="showFilter" type="checkbox"
+                (ngModelChange)="addExtraFilterHandler()" [id]="item.displayName">
+              <span class="checkMark"></span>
+              <span class="check-box-text">{{item.displayName}}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-digitalRed1" id="close" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add/Remove Filter Modal End -->
+
+
+<ng-container *ngIf="!isMobileView">
+<app-add-edit-bookmark></app-add-edit-bookmark>
+</ng-container>

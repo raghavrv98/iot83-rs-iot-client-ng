@@ -1,0 +1,75 @@
+.pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 5px 10px;
+  background-color: white;
+  height: 50px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+}
+
+.page-item h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--textColor);
+  margin: 0;
+  display: inline-block;
+}
+
+.page-item h6 .form-control {
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 3px;
+  padding: 5px 7px;
+  color: var(--textColor);
+  margin: 0 10px;
+  background-color: white;
+}
+
+.page-item .dropdown-menu {
+  min-width: 70px;
+  max-height: 370px;
+  overflow-y: auto;
+}
+
+.page-item .dropdown-menu li {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--contentColor);
+  cursor: pointer;
+}
+
+.page-item .dropdown-menu li:hover {
+  color: var(--secondaryColor);
+}
+
+/* Pagination responsive Css Start */
+@media only screen and (max-width: 768px) {
+  .page-item.fx-b20 h6 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .page-item.fx-b60 {
+    max-width: 70% !important;
+    flex: 0 0 70% !important;
+  }
+
+  .page-item.fx-b20 {
+    max-width: 15% !important;
+    flex: 0 0 15% !important;
+  }
+
+  .page-item.text-center h6 {
+    font-size: 12px;
+  }
+
+  .page-item.text-center h6 .form-control {
+    width: 40px;
+  }
+}

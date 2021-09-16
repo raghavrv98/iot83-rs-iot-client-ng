@@ -1,0 +1,35 @@
+<div class="flex pagination align-items-center">
+  <div class="fx-b20 page-item">
+    <h6 id="recordsPerPage" data-testid="openChangePageSizeMenu"> Records Per Page :</h6>
+    <button class="btn btn-digitalRed1 dropdown-toggle m-0" type="button" data-toggle="dropdown"
+      id="recordsPerPage">{{paginationService.devicePerPage}}</button>
+    <ul class="dropdown-menu">
+      <li data-testid="recordsPerPage" (click)="changePageSize(page)"
+        *ngFor="let page of pageSizes; trackBy: trackByFn">{{page}}</li>
+    </ul>
+  </div>
+  <div class="fx-b60 page-item text-center">
+    <button (click)="onClickPrevious(true)" [disabled]="currentPage - 3 < 1" class="btn btn-digitalRed1" data-testid="backwards" id="backwards">
+      <i class="far fa-chevron-double-left"></i>
+    </button>
+    <button (click)="onClickPrevious(false)" [disabled]="currentPage == 1" class="btn btn-digitalRed1" data-testid="previousPage" id="previousPage">
+      <i class="far fa-chevron-left"></i>
+    </button>
+    <h6 id="pageOf{{lastPage}}">Page
+      <input (blur)="onCurrentPageChangeHandler(currentPage)" type="number" min='1' max='{{lastPage}}'
+        class="form-control" [value]="currentPage" [(ngModel)]="currentPage" name="currentPage">of
+      {{lastPage}}
+    </h6>
+    <button (click)="onClickNext(false)" [disabled]="currentPage == lastPage" class="btn btn-digitalRed1"
+      data-testid="nextPage" id="nextPage">
+      <i class="far fa-chevron-right"></i>
+    </button>
+    <button (click)="onClickNext(true)" [disabled]="currentPage + 3> lastPage" class="btn btn-digitalRed1" data-testid="forward" id="forward">
+      <i class="far fa-chevron-double-right"></i>
+    </button>
+  </div>
+  <div class="fx-b20 page-item text-right">
+    <h6 class="" id="totalRecords">Total Records : </h6>
+    <span id="totalRecordsCount" class="btn btn-digitalRed1 cursor-default">{{totalRecordsFiltered}}</span>
+  </div>
+</div>

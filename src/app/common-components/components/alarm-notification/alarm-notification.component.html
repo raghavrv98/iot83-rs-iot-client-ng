@@ -1,0 +1,29 @@
+<button class="btn btn-black" data-toggle="dropdown" id='alarmNotificationBtn' (click)="filterStateChangeHandler()">
+  <i [ngClass]='isAlarmNotificationActive ? "fas fa-bell active-badge" : "far fa-bell mr-r-0"'></i>
+  <sup>{{notificationAlarmData.length}}</sup>
+</button>
+<div class="dropdown-menu alarm-notification-wrapper">
+
+  <div class="card">
+    <div class="card-header">Alarm Notification</div>
+    <div class="card-body p-3">
+      <ul class="alarm-notification-list list-style-none">
+        <li *ngFor="let an of notificationAlarmData; let i = index; trackBy: trackByFn"
+          (click)="$event.stopPropagation()">
+          <div class="alarm-notification-icon">
+            <img src="./assets/images/alarmRaised.png" />
+          </div>
+          <p>Tag :<strong role="device-tag">{{an.deviceTag}}</strong><span class="ml-3 mr-3">|</span>Type
+            :<strong>{{an.alarmType}}</strong></p>
+          <p>Description : <strong> {{ an.description }} </strong></p>
+          <h6>{{ convertTimeStampToDuration(an.timestamp) }}</h6>
+          <span data-toggle="tooltip" data-placement="bottom" [title]="an.state ? 'Silence' :'Remove Silence'"
+            class="alarm-notification-status" [ngClass]="an.state ? 'active':'inActive'"
+            (click)="notificationAlarmStateHandler(an.state, i)">
+            <i [ngClass]="an.state ? 'fa fa-bell' : 'fa fa-bell-slash'"></i>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

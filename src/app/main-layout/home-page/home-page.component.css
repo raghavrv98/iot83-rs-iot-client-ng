@@ -1,0 +1,218 @@
+.app-content {
+  padding: 140px 10px 50px;
+}
+
+.content-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: white;
+  z-index: 1;
+}
+
+.brand-wrapper .brand-logo {
+  flex: 0 0 10%;
+  max-width: 10%;
+}
+
+.brand-wrapper .brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand-wrapper .brand-name h1 {
+  margin: 0;
+  font-size: 60px;
+}
+
+.content-sub-head .welcome-title {
+  flex: 0 0 30%;
+  max-width: 30%;
+  text-align: center;
+}
+
+.welcome-title h5 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.welcome-title h5 strong {
+  font-size: 30px;
+}
+
+.welcome-title p {
+  margin: 0;
+  color: black;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.logout-btn button i {
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.content-body {
+  padding: 150px 0 0;
+}
+
+/*  Pie Chart Css Start  */
+
+.pie-chart-wrapper {
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.pie-chart-wrapper h5 {
+  margin: 0;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--secondaryColor);
+}
+
+.pie-chart-wrapper .pie-chart-box {
+  height: 34.5vh;
+}
+
+/*  Pie Chart Css End  */
+
+/* Custom border css start */
+
+.custom-border-box {
+  position: relative;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.custom-border-box .custom-border {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  width: 60px;
+  border-radius: 6px;
+  background-color: #ddd;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-border-box .custom-border.border-left {
+  left: calc(50% - 20px);
+  transform: translate(-100%, -50%);
+}
+
+.custom-border-box .custom-border.border-right {
+  right: calc(50% - 20px);
+  transform: translate(100%, -50%);
+}
+
+.custom-border-box .custom-border.border-left::after,
+.custom-border-box .custom-border.border-right::before {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: #88030a;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+
+.custom-border-box .custom-border.border-left::after {
+  left: 100%;
+}
+
+.custom-border-box .custom-border.border-right::before {
+  right: 100%;
+}
+
+/* Custom border css end */
+
+@media only screen and (max-width: 768px) {
+  .fx-b70 {
+    flex: 0 0 100%;
+    max-width: 100% !important;
+  }
+
+  .fx-b30 {
+    flex: 0 0 100%;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .brand-wrapper .brand-logo {
+    flex: 0 0 20%;
+    max-width: 20%;
+    height: auto;
+  }
+
+  .brand-wrapper .brand-name h1 {
+    font-size: 15px;
+  }
+
+  .content-sub-head {
+    margin-top: 10px;
+  }
+
+  .content-sub-head .welcome-title {
+    flex: 0 0 60%;
+    max-width: 60%;
+    text-align: left;
+  }
+
+  .welcome-title h5 {
+    font-size: 16px;
+  }
+
+  .welcome-title h5 strong {
+    font-size: 18px;
+  }
+
+  .welcome-title p {
+    font-size: 12px;
+  }
+
+  .logout-btn .desktop-only {
+    display: none;
+  }
+
+  .logout-btn button i {
+    margin: 0;
+  }
+
+  .content-body {
+    padding: 30px 0 0;
+    flex-direction: column;
+  }
+
+  .pie-chart-wrapper {
+    margin-bottom: 5px;
+  }
+
+  .pie-chart-wrapper h6 {
+    padding: 10px;
+  }
+
+  .pie-chart-wrapper .pie-chart-box {
+    height: 31.5vh;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .brand-wrapper .brand-name h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .content-sub-head {
+    margin-top: 10px;
+  }
+}

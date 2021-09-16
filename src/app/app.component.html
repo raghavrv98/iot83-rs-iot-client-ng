@@ -1,0 +1,7 @@
+<ng-container *ngIf="showHomePage;else pagesWithCommonTheme">
+    <router-outlet></router-outlet>
+</ng-container>
+<ng-template #pagesWithCommonTheme>
+    <app-filter></app-filter>
+    <app-main-menu [templateType]="'commonTemplate'"></app-main-menu>
+</ng-template>
